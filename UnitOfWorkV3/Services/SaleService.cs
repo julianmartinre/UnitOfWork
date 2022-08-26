@@ -19,7 +19,7 @@ namespace UnitOfWorkV3.Services
 
         public int CreateSale(Sale sale)
         {
-            using (var context = _unitOfWork.Create())
+            using (var context = _unitOfWork.Create(true))
             {
                 try
                 {

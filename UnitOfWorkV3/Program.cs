@@ -11,9 +11,9 @@ SaleDetail detailA = new SaleDetail() { Product = productA, Quantity = 10 };
 SaleDetail detailB = new SaleDetail() { Product = productB, Quantity = 20 };
 SaleDetail detailC = new SaleDetail() { Product = productC, Quantity = 30 };
 
-//sale.Details.Add(detailA);
-//sale.Details.Add(detailB);
-//sale.Details.Add(detailC);
+sale.Details.Add(detailA);
+sale.Details.Add(detailB);
+sale.Details.Add(detailC);
 
 foreach (var detail in sale.Details)
 {
@@ -24,12 +24,6 @@ var unitOfWork = new UnitOfWorkSqlServer();
 
 var productService = new ProductService(unitOfWork);
 
-//var result = productService.CreateProduct(new Product() { Name = "Producto" + DateTime.Now.Ticks.ToString() });
-//Console.WriteLine(result);
-
 var saleService = new SaleService(unitOfWork);
 sale.Id = saleService.CreateSale(sale);
 Console.WriteLine(sale.Id);
-
-//SaleService saleService = new SaleService();
-//saleService.CreateSale(sale);

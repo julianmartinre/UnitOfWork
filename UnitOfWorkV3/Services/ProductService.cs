@@ -20,7 +20,7 @@ namespace UnitOfWorkV3.Services
 
         public int CreateProduct(Product product)
         {
-            using (var context = _unitOfWork.Create())
+            using (var context = _unitOfWork.Create(true))
             {
                 var result = context.Repositories.ProductRepository.Create(product);
 

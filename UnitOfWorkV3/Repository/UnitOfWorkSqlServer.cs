@@ -17,11 +17,11 @@ namespace UnitOfWorkV3.Repository
             _configuration = configuration;
         }
 
-        public IUnitOfWorkAdapter Create()
+        public IUnitOfWorkAdapter Create(bool beginTransaction)
         {
             var connectionString = @"Data Source=DESKTOP-0IG0NTD\SQLSERVER2014;Initial Catalog=TCTD;Integrated Security=True";
 
-            return new UnitOfWorkSqlServerAdapter(connectionString);
+            return new UnitOfWorkSqlServerAdapter(connectionString, beginTransaction);
         }
     }
 }

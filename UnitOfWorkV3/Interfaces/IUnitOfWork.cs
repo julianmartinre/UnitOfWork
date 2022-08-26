@@ -8,6 +8,6 @@ namespace UnitOfWorkV3.Interfaces
 {
     public interface IUnitOfWork
     {
-        IUnitOfWorkAdapter Create();
+        IUnitOfWorkAdapter Create(bool beginTransaction);
     }
 }
