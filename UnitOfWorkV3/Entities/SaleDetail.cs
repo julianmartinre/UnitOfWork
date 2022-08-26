@@ -7,5 +7,7 @@ namespace UnitOfWorkV3.Entities
         public int IdSale { get; set; } //TODO: refactor.
         public IProduct Product { get; set; }
         public int Quantity { get; set; }
+
+        public SaleDetail() => Product = new Product();
     }
 }

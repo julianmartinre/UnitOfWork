@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace UnitOfWorkV3.Interfaces
 {
-    public interface ISaleDetailRepository : ICreate<ISaleDetail>
+    public interface IGetById<T>
     {
-        IList<ISaleDetail> GetAllByIdSale(int id);
+        T GetById(int id);
     }
 }

@@ -16,7 +16,7 @@ namespace UnitOfWorkV3.Services
         {
             _unitOfWork = unitOfWork;
         }
-
+        
         public int CreateSale(Sale sale)
         {
             using (var context = _unitOfWork.Create(true))
@@ -49,6 +49,25 @@ namespace UnitOfWorkV3.Services
                 {
                     throw;
                 }            
+            }
+        }
+
+        public Sale GetSale(int IdSale)
+        {
+            using (var context = _unitOfWork.Create(false))
+            {
+                try
+                {
+                    ISale sale = context.Repositories.SaleRepository.GetById(IdSale);
+
+                    sale.Details = context.Repositories.SaleDetailRepository.GetAllByIdSale(IdSale);
+
+                    return (Sale)sale;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
     }

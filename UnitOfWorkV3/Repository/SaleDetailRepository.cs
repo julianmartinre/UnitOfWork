@@ -29,5 +29,30 @@ namespace UnitOfWorkV3.Repository
 
             return (Int32)command.ExecuteScalar();
         }
+
+        public IList<ISaleDetail> GetAllByIdSale(int id)
+        {
+            var query = "get_saledetails";
+            var command = CreateCommand(query);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("id", id);
+
+            var reader = command.ExecuteReader();
+            IList<ISaleDetail> saleDetails = new List<ISaleDetail>();
+
+            while (reader.Read())
+            {
+                SaleDetail saleDetail = new SaleDetail();
+                saleDetail.IdSale = Convert.ToInt32(reader["idSale"].ToString());
+                saleDetail.Product.Id = Convert.ToInt32(reader["idProduct"].ToString());
+                saleDetail.Product.Name = reader["name"].ToString();
+                saleDetail.Quantity = Convert.ToInt32(reader["quantity"].ToString());
+                saleDetails.Add(saleDetail);
+            }
+            reader.Close();
+
+            return saleDetails;
+        }
     }
 }

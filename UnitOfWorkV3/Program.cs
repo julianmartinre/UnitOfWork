@@ -27,3 +27,11 @@ var productService = new ProductService(unitOfWork);
 var saleService = new SaleService(unitOfWork);
 sale.Id = saleService.CreateSale(sale);
 Console.WriteLine(sale.Id);
+
+sale = saleService.GetSale(sale.Id);
+Console.WriteLine(sale.Date);
+
+foreach (var detail in sale.Details)
+{
+    Console.WriteLine("Sale: {0} Product: {1}-{2} Quantity: {3}.",detail.IdSale, detail.Product.Id, detail.Product.Name, detail.Quantity);
+}

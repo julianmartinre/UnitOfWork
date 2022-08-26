@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnitOfWorkV3.Interfaces
 {
-    public interface ISaleRepository : ICreate<ISale>
+    public interface ISaleRepository : ICreate<ISale>, IGetById<ISale>
     {
     
     }
